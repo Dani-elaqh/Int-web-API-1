@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon backend/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,11 @@
   },
   "homepage": "https://github.com/Dani-elaqh/Int-web-API-1#readme",
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "fs-extra": "^9.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
