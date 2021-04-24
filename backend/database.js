@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/test', {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+});
 
 //conection
 mongoose.connection.on('error', (err) => { 
