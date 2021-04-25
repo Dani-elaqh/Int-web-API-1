@@ -17,5 +17,8 @@ router.post('/', async (req, res) =>{
     res.json({message: 'Music saved'});
 });
 
-//router.delete()
+router.delete('/:id', async (req, res) =>{
+    const music = await Music.findByIdAndDelete(req.params.id);
+    res.json({message: 'Music deleted'});
+});
 module.exports = router;
