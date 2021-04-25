@@ -11,9 +11,11 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) =>{
-    const { artist, album} = req.body;
-    new Music({artit, album })
-    res.send('received')
-})
+    const { artist, album }= req.body;
+    const newMusic =  new Music({artist, album })
+    await newMusic.save();
+    res.json({message: 'Music saved'});
+});
 
+router.delete()
 module.exports = router;
