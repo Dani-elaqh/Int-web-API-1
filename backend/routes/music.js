@@ -2,12 +2,12 @@
 const { Router } = require('express');
 const router = Router(); //executing 
 
-const Music = require('../models/musica');
+const Music = require('../models/Musica');
 
 
 router.get('/', async (req, res) => {
-    const musics = await Music.find();
-    res.json(musics);
+    const music = await Music.find();
+    res.json(music);
 });
 
 router.post('/', async (req, res) =>{
@@ -17,5 +17,5 @@ router.post('/', async (req, res) =>{
     res.json({message: 'Music saved'});
 });
 
-router.delete()
+//router.delete()
 module.exports = router;
