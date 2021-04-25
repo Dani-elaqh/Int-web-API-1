@@ -11,7 +11,7 @@ module.exports = {
     entry:'./frontend/app.js',
     output: {
         path: path.join(__dirname, 'backend/public'),
-        filename: 'css/bundle.js'
+        filename: 'js/bundle.js'
     },
 
     module:{
@@ -22,8 +22,8 @@ module.exports = {
                     devMode ? 'style-loader': MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
-        }
-    ]
+            }
+        ]
     },
 
     plugins: [
