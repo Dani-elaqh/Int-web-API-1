@@ -1,1 +1,1 @@
-alert('works');
+import './styles/app.css';
