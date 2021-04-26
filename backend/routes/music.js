@@ -12,7 +12,8 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) =>{
     const { artist, album }= req.body;
-    const newMusic =  new Music({artist, album })
+    const imagePath = '/uploads/' + req.file.filename;
+    const newMusic =  new Music({artist, album, imagePath });
     await newMusic.save();
     res.json({message: 'Music saved'});
 });
