@@ -12,8 +12,37 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <a href="" class="navbar-brand">Sound App</a>
+            <a href="/" class="navbar-brand">Sound App</a>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form id="music-form" class="card card-body">
+                    <div class="form-group">
+                        <input type="text" name="artist" class="form-control" placeholder="Artist name" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="author" class="form-control" placeholder="Album name">
+                     
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="image">
+                            <label for="image" class="custom-file-label">Choose album cover</label>
+                        </div>
+
+                    </div>
+                    <button class="btn btn-danger">
+                        Save new artist
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-8" id="music-cards">
+                
+            </div>
+        </div>
+    </div>
 </body>
 </html>
