@@ -16,6 +16,7 @@ module.exports = {
 
     mode: 'development',
 
+    //If we are un development mode the files should come from style-loader, otherwise in production mode charge them from MinicssExtractplugin
     module:{
         rules:[
             {
@@ -28,10 +29,10 @@ module.exports = {
         ]
     },
 
-    devServer: {
-        host: '0.0.0.0',
-        allowedHosts: ['localhost', '.gitpod.io'],
-    },
+    // devServer: {
+    //     host: '0.0.0.0',
+    //     allowedHosts: ['localhost', '.gitpod.io'],
+    // },
 
     plugins: [
 
@@ -44,6 +45,7 @@ module.exports = {
                 removeScriptTypeAttributes: true,
                 removeStyleLinkTypeAttributes: true,
                 useShortDoctype: true
+                
             }
         }),
 

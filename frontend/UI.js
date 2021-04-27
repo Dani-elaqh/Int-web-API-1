@@ -1,6 +1,9 @@
 import MusicService from './services/MusicService';
+
 const musicService = new MusicService();
+
 import { formtat } from 'timeago.js';
+
 //class para interactuar con el navegador, instantiating 
 class UI {
 

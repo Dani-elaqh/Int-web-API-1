@@ -1,5 +1,7 @@
 import './styles/app.css';
 
+import MusicService from './services/MusicService';
+
 import UI from './UI';
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -17,6 +19,9 @@ document.getElementById('music-form')
     formData.append('image', image[0]);
     formData.append('artist', artist);
     formData.append('album', album);
+
+    const musicService = new MusicService()
+    musicService.postMusic(formData)
 
     const ui = new UI();
     ui.addNewMusic(formData);
