@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 });
 
 document.getElementById('music-form')
-.addEventListener('submit', e =>{
+.addEventListener('submit', function(e) {
     const artist = document.getElementById('artist').value;
     const album = document.getElementById('album').value;
     const image = document.getElementById('image').files;
@@ -20,12 +20,9 @@ document.getElementById('music-form')
     formData.append('artist', artist);
     formData.append('album', album);
 
-    const musicService = new MusicService()
-    musicService.postMusic(formData)
-
     const ui = new UI();
     ui.addNewMusic(formData);
-
+    ui.renderMessage('New Music added', 'success', 8000);
     
     e.preventDefault();
 });

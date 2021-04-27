@@ -2,7 +2,7 @@
 class MusicService{
 
     constructor(){
-        this.URI = 'https://8000-moccasin-pike-97kb6alo.ws-eu03.gitpod.io/api/music';
+        this.URI = 'https://8000-moccasin-alligator-l76m3m98.ws-eu03.gitpod.io/api/music';
     }
 
     async getMusic(){
@@ -14,15 +14,16 @@ class MusicService{
     async postMusic(music){
         const res = await fetch(this.URI, {
             method: 'POST',
-            body: music,
+            body: music
         });
         const data = await res.json();
+        console.log(data);
 
     }
 
     async deleteMusic(musicId){
-        const res = await fetch('${this.URI}/${musicId}', {
-            headers: {
+        const res = await fetch(`${this.URI}/${musicId}`, {
+                headers: {
                 'Content-Type': 'application/json'
             },
             method: 'DELETE'

@@ -15,7 +15,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_MusicService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/MusicService */ "./frontend/services/MusicService.js");
 /* harmony import */ var timeago_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! timeago.js */ "./node_modules/timeago.js/esm/index.js");
 
+
 const musicService = new _services_MusicService__WEBPACK_IMPORTED_MODULE_0__.default();
+
+
 
 //class para interactuar con el navegador, instantiating 
 class UI {
@@ -25,26 +28,26 @@ async renderMusic(){
     const music = await musicService.getMusic();
     const musicCardContainer =  document.getElementById('music-cards');
     musicCardContainer.innerHTML= '';
-    musi.forEach(music => {
-        document.createElement('div');
-        DataView.className = '';
-        DataView.innerHTML = `
+    music.forEach(music => {
+        const div = document.createElement('div');
+        div.className = '';
+        div.innerHTML = `
         <div class="card m-2">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="${music.imagePath}" class="img-fluid" alt="">
-            </div>
-            <div class="col-md-8">
-                <div class="card-block px-2">
-                    <h4 class="card-title">${music.artist}</h4>
-                    <p class="card-text">${music.album}</p>
-                    <a href="#" class="btn btn-danger delete" _id="${music._id}">X</a>
+            <div class="row" >
+                <div class="col-md-4">
+                    <img src="https://8080-moccasin-alligator-l76m3m98.ws-eu03.gitpod.io/${music.imagePath}" alt="" class="ims-fluid"/>
                 </div>
+                <div class="col-md-8">
+                    <div class="card-block px-2>
+                        <h4 class="card-title">${music.artist}</h4>
+                        <p class="card-text">${music.album}</p>
+                        <a href="#" class="btn btn-danger delete" _id="${music._id}">X</a>
+                </div>
+
             </div>
-        </div>
-        <div class="card-footer w-100 text-muted">
-          ${format(music.created_at)}
-        </div>
+            <div class="card-footer">
+                ${(0,timeago_js__WEBPACK_IMPORTED_MODULE_1__.format)(music.created_at)}
+            </div>
       </div>
       `;
       musicCardContainer.appendChild(div);
@@ -54,18 +57,32 @@ async renderMusic(){
 async addNewMusic(music){
    await musicService.postMusic(music);
    this.clearMusicForm();
+   this.renderMusic();
 }
 
 clearMusicForm(){
     document.getElementById('music-form').reset();
 }
+//creating Div, then telling where to put it, finally removing it
+renderMessage(message, colorMessage, secondsToRemove){
+    const div = document.createElement('div');
+    div.className = 'alert alert-${colorMessage}';
+    div.appendChild(document.createTextNode(message));
 
-renderMessage(){
+    const container = document.querySelector('.col-md-4');
+    const musicForm = document.querySelector('#musicForm');
+
+    container.insertBefore(div, musicForm);
+    setTimeout(() => {
+        document.querySelector('.message')
+    }, secondsToRemove);
 
 
 }
 
-deleteMusic(){
+async deleteMusic(musicId){
+    await musicService.deleteMusic(musicId);
+    this.renderBooks();
 
 }
 }
@@ -88,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 class MusicService{
 
     constructor(){
-        this.URI = 'https://8000-moccasin-pike-97kb6alo.ws-eu03.gitpod.io/';
+        this.URI = 'https://8000-moccasin-alligator-l76m3m98.ws-eu03.gitpod.io/api/music';
     }
 
     async getMusic(){
@@ -103,12 +120,13 @@ class MusicService{
             body: music
         });
         const data = await res.json();
+        console.log(data);
 
     }
 
     async deleteMusic(musicId){
-        const res = await fetch('${this.URI}/${musicId}', {
-            headers: {
+        const res = await fetch(`${this.URI}/${musicId}`, {
+                headers: {
                 'Content-Type': 'application/json'
             },
             method: 'DELETE'
@@ -594,18 +612,21 @@ var __webpack_exports__ = {};
   \*************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_app_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/app.css */ "./frontend/styles/app.css");
-/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UI */ "./frontend/UI.js");
+/* harmony import */ var _services_MusicService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/MusicService */ "./frontend/services/MusicService.js");
+/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UI */ "./frontend/UI.js");
+
+
 
 
 
 
 document.addEventListener('DOMContentLoaded', () =>{
-    const ui = new _UI__WEBPACK_IMPORTED_MODULE_1__.default();
+    const ui = new _UI__WEBPACK_IMPORTED_MODULE_2__.default();
     ui.renderMusic();
-})
+});
 
 document.getElementById('music-form')
-.addEventListener('submit', e =>{
+.addEventListener('submit', function(e) {
     const artist = document.getElementById('artist').value;
     const album = document.getElementById('album').value;
     const image = document.getElementById('image').files;
@@ -615,12 +636,21 @@ document.getElementById('music-form')
     formData.append('artist', artist);
     formData.append('album', album);
 
-    const ui = new _UI__WEBPACK_IMPORTED_MODULE_1__.default();
+    const ui = new _UI__WEBPACK_IMPORTED_MODULE_2__.default();
     ui.addNewMusic(formData);
-
+    ui.renderMessage('New Music added', 'success', 8000);
     
     e.preventDefault();
 });
+
+document.getElementById('music-cards')
+    .addEventListener('click', e =>{
+        if(e.target.classList.contains('delete')){
+        const ui = new _UI__WEBPACK_IMPORTED_MODULE_2__.default()
+        ui.deleteMusic(e.target.getAttribute('_id'));
+        }
+        e.preventDefault();
+    });
 })();
 
 /******/ })()

@@ -19,7 +19,7 @@ async renderMusic(){
         <div class="card m-2">
             <div class="row" >
                 <div class="col-md-4">
-                    <img src="https://8000-moccasin-pike-97kb6alo.ws-eu03.gitpod.io${music.imagePath}" alt="" class="ims-fluid"/>
+                    <img src="https://8080-moccasin-alligator-l76m3m98.ws-eu03.gitpod.io/${music.imagePath}" alt="" class="ims-fluid"/>
                 </div>
                 <div class="col-md-8">
                     <div class="card-block px-2>
@@ -47,8 +47,19 @@ async addNewMusic(music){
 clearMusicForm(){
     document.getElementById('music-form').reset();
 }
+//creating Div, then telling where to put it, finally removing it
+renderMessage(message, colorMessage, secondsToRemove){
+    const div = document.createElement('div');
+    div.className = 'alert alert-${colorMessage}';
+    div.appendChild(document.createTextNode(message));
 
-renderMessage(){
+    const container = document.querySelector('.col-md-4');
+    const musicForm = document.querySelector('#musicForm');
+
+    container.insertBefore(div, musicForm);
+    setTimeout(() => {
+        document.querySelector('.message')
+    }, secondsToRemove);
 
 
 }

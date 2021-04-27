@@ -5,23 +5,26 @@ if(process.env.NODE_ENV === 'development'){
 console.log(process.env.NODE_ENV)
 const express =  require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const multer  =  require('multer');
 const path =  require('path');
-const cors = require('cors');
-
-var port = process.env.PORT || 8000;
 
 //init
 //server for the app
 const app= express();
 require('./database');
 
+var port = process.env.PORT || 8000;
+
+
 
 //middleware, every petition will pass trhought morgan
+app.use(cors());
 app.use(morgan('dev'));
+
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads'),
-    filename (req, file, cb){
+    filename(req, file, cb){
         cb(null, new Date().getTime() + path.extname(file.originalname));
     }
    
@@ -29,7 +32,7 @@ const storage = multer.diskStorage({
 app.use(multer({storage}).single('image'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(cors());
+
 
 //Routes
 app.use('/api/music', require('./routes/music'));

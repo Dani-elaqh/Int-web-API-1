@@ -1,6 +1,6 @@
 //webpack is able to modify the html code and move it to another folder, so first we say were is the original code for the front end 
 const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //
 const devMode = process.env.NODE_ENV !== 'production';
@@ -37,7 +37,7 @@ module.exports = {
 
     plugins: [
 
-        new htmlWebpackPlugin({
+        new HtmlWebpackPlugin({
             template: './frontend/index.html',
             minify: {
                 collapseWhitespace: true,
