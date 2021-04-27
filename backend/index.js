@@ -5,9 +5,11 @@ if(process.env.NODE_ENV === 'development'){
 console.log(process.env.NODE_ENV)
 const express =  require('express');
 const morgan = require('morgan');
-const cors = require('cors');
+const cors = require('cors'); 
 const multer  =  require('multer');
 const path =  require('path');
+var webpack = require('webpack');
+var webpackDevServer = require('webpack-dev-server');
 
 //init
 //server for the app

@@ -8,7 +8,11 @@ const path = require('path');
 const Music = require('../models/Musica');
 
 
-
+router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 
 
@@ -27,7 +31,7 @@ router.post('/', async (req, res) =>{
 
 router.delete('/:id', async (req, res) =>{
     const music = await Music.findByIdAndDelete(req.params.id);
-    unlink(path.resolve('/backend/public' + book.imagePath))
+    await unlink(path.resolve('./backend/public/' + music.imagePath));
     res.json({message: 'Music deleted'});
 });
 module.exports = router;

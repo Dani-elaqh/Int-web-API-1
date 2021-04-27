@@ -22,7 +22,7 @@ document.getElementById('music-form')
 
     const ui = new UI();
     ui.addNewMusic(formData);
-    ui.renderMessage('New Music added', 'success', 8000);
+    ui.renderMessage('New Music added', 'success', 3000);
     
     e.preventDefault();
 });
@@ -32,6 +32,7 @@ document.getElementById('music-cards')
         if(e.target.classList.contains('delete')){
         const ui = new UI()
         ui.deleteMusic(e.target.getAttribute('_id'));
+        ui.renderMessage('Music removed', 'success', 3000)
         }
         e.preventDefault();
     });

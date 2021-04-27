@@ -8,32 +8,34 @@ const devMode = process.env.NODE_ENV !== 'production';
 //minify to minify the code of html
 module.exports = {
 
-    entry:'./frontend/app.js',
+    entry: './frontend/app.js',
+    mode: 'development',
     output: {
         path: path.join(__dirname, 'backend/public'),
         filename: 'js/bundle.js'
     },
 
-    mode: 'development',
+    module: {
+
+    //     devServer: {
+        
+    //         host: '127.0.0.1',
+    //         allowedHosts: ['localhost', '.gitpod.io'],
+    //         sockPort: 8080
+        
+    // },
 
     //If we are un development mode the files should come from style-loader, otherwise in production mode charge them from MinicssExtractplugin
-    module:{
-        rules:[
+        rules: [
             {
-                test:  /\.css/,
+                test: /\.css/,
                 use: [
-                    devMode ? 'style-loader': MiniCssExtractPlugin.loader,
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
             }
         ]
     },
-
-    
-    // devServer: {
-    //     host: '0.0.0.0',
-    //     allowedHosts: ['localhost', '.gitpod.io'],
-    // },
 
     plugins: [
 
@@ -46,7 +48,7 @@ module.exports = {
                 removeScriptTypeAttributes: true,
                 removeStyleLinkTypeAttributes: true,
                 useShortDoctype: true
-                
+
             }
         }),
 
@@ -55,7 +57,7 @@ module.exports = {
 
         })
 
-    ], 
+    ],
     devtool: 'source-map'
 
 };

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://Int-web-API-1/./frontend/styles/app.css"],"names":[],"mappings":"AAAA;IACI,mBAAmB;AACvB,C","file":"css/bundle.css","sourcesContent":["body{\n    background: #d2dae2;\n}"],"sourceRoot":""}
