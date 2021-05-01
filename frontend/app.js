@@ -1,7 +1,5 @@
 import './styles/app.css';
 
-import MusicService from './services/MusicService';
-
 import UI from './UI';
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -10,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 });
 
 document.getElementById('music-form')
-.addEventListener('submit', function(e) {
+.addEventListener('submit', (e) => {
     const artist = document.getElementById('artist').value;
     const album = document.getElementById('album').value;
     const image = document.getElementById('image').files;
@@ -30,8 +28,9 @@ document.getElementById('music-form')
 document.getElementById('music-cards')
     .addEventListener('click', e =>{
         if(e.target.classList.contains('delete')){
-        const ui = new UI()
-        ui.deleteMusic(e.target.getAttribute('_id'));
+        const ui = new UI();
+        const id = e.target.getAttribute('_id');
+        ui.deleteMusic(id);
         ui.renderMessage('Music removed', 'success', 3000)
         }
         e.preventDefault();

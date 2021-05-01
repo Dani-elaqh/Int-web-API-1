@@ -1,13 +1,13 @@
-//Class with methods that will be used many times
+//Class with methods that will be used many times to get, post and delete the data 
 class MusicService{
 
     constructor(){
-        this.URI = 'https://8000-moccasin-alligator-l76m3m98.ws-eu03.gitpod.io/api/music';
+        this.URI = 'https://8000-moccasin-alligator-l76m3m98.ws-eu04.gitpod.io/api/music';
     }
 
     async getMusic(){
-        const response = await fetch(this.URI);
-        const music= await response.json();
+        const res = await fetch(this.URI);
+        const music= await res.json();
         return music;
     }
 

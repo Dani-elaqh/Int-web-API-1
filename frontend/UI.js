@@ -19,7 +19,7 @@ async renderMusic(){
         <div class="card m-2">
             <div class="row" >
                 <div class="col-md-4">
-                    <img src="https://localhost:8000${music.imagePath}" alt="" class="ims-fluid"/>
+                    <img src="https://8000-moccasin-alligator-l76m3m98.ws-eu04.gitpod.io/${music.imagePath}" alt="" class="img-fluid"/>
                 </div>
                 <div class="col-md-8">
                     <div class="card-block px-2>
@@ -66,7 +66,7 @@ renderMessage(message, colorMessage, secondsToRemove){
 
 async deleteMusic(musicId){
     await musicService.deleteMusic(musicId);
-    this.renderBooks();
+    this.renderMusic();
 
 }
 }

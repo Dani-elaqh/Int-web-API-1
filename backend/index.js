@@ -1,8 +1,8 @@
-if(process.env.NODE_ENV === 'development'){
+if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config();
 }
+require('dotenv').config();
 
-console.log(process.env.NODE_ENV)
 const express =  require('express');
 const morgan = require('morgan');
 const cors = require('cors'); 
@@ -14,6 +14,32 @@ var webpackDevServer = require('webpack-dev-server');
 //init
 //server for the app
 const app= express();
+
+// Add headers
+app.use(function (req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  // Request methods you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+
+  // Request headers you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type,authorization"
+  );
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  // Pass to next layer of middleware
+  next();
+});
+
 require('./database');
 
 var port = process.env.PORT || 8000;
@@ -21,19 +47,19 @@ var port = process.env.PORT || 8000;
 
 
 //middleware, every petition will pass trhought morgan
-app.use(cors());
+
 app.use(morgan('dev'));
 
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads'),
-    filename(req, file, cb){
+    filename(req, file, cb) {
         cb(null, new Date().getTime() + path.extname(file.originalname));
     }
-   
 })
 app.use(multer({storage}).single('image'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(cors());
 
 
 //Routes

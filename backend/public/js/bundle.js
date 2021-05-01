@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//Class with methods that will be used many times
+//Class with methods that will be used many times to get, post and delete the data 
 class MusicService{
 
     constructor(){
