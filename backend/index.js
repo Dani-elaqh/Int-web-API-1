@@ -1,6 +1,5 @@
-//This code is a compilation of classes with the lecturer Mikhail Timofev and the tutorial from Fazt code on Youtube https://www.youtube.com/watch?v=VOx3iON96ew
-
-
+//This code is a compilation of classes with the lecturer Mikhail Timofev and the tutorial from Fazt code on Youtube https://www.youtube.com/watch?v=IR5FXX7a_rM&t=503s, https://www.youtube.com/watch?v=VOx3iON96ew&t=808s
+//And also has code from the classes from Mikhail Timofev
 if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config();
 }
@@ -21,7 +20,7 @@ app.use(cors());
 
 // Add headers
 app.use(function (req, res, next) {
-  // Website you wish to allow to connect
+  // Website you wish to allow to connect, all
   res.setHeader("Access-Control-Allow-Origin", "*");
 
   // Request methods you wish to allow

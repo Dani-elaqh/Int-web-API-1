@@ -1,3 +1,5 @@
+//this file is the one that retrieves the information getting elements from the index.html file. 
+//this code is from the Tutorail JavaScript Full Stack https://www.youtube.com/watch?v=hO9993I520E&t=258s
 import './styles/app.css';
 
 import UI from './UI';

@@ -1,4 +1,5 @@
 //webpack is able to modify the html code and move it to another folder, so first we say were is the original code for the front end 
+// this code is from the tutorial JavaScrip full stack https://www.youtube.com/watch?v=gtkdxLgHIhg&t=452s 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');

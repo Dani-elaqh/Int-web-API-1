@@ -1,3 +1,5 @@
+//This code is coming from the Tutorial JavaScript FullStack. https://www.youtube.com/watch?v=cpIIANXEXaI
+//this class is in charge of interact with the browser
 import MusicService from './services/MusicService';
 
 const musicService = new MusicService();
