@@ -46,7 +46,7 @@ app.use(function (req, res, next) {
 
 require('./database');
 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 3000;
 
 
 

@@ -19,7 +19,7 @@ async renderMusic(){
         <div class="card m-2">
             <div class="row" >
                 <div class="col-md-4">
-                    <img src="https://8000-copper-chickadee-hdffohu8.ws-eu04.gitpod.io${music.imagePath}" alt="" class="img-fluid"/>
+                    <img src="${music.imagePath}" alt="" class="img-fluid"/>
                 </div>
                 <div class="col-md-8">
                     <div class="card-block px-2>

@@ -7,11 +7,11 @@ const { unlink } = require('fs-extra');
 const Music = require('../models/Musica');
 
 //Here we telling the router to let the CORS have access and let communicate with the ports
-router.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+// router.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
 
 
 
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const music = await Music.findByIdAndDelete(req.params.id);
-    //unlink(path.resolve('./backend/public/' + music.imagePath));
+    unlink(path.resolve('./backend/public/' + music.imagePath));
     res.json({message: 'Album deleted'});
 });
 module.exports = router;

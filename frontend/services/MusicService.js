@@ -1,8 +1,8 @@
-//Class with methods that will be used many times to get, post and delete the data 
+//This file was created following the tutorial from Youtube Class with methods that will be used many times to get, post and delete the data 
 class MusicService{
 
     constructor(){
-        this.URI = 'https://8000-copper-chickadee-hdffohu8.ws-eu04.gitpod.io/api/music';
+        this.URI = '/api/music';
     }
 
     async getMusic(){

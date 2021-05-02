@@ -101,11 +101,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//Class with methods that will be used many times to get, post and delete the data 
+//This file was created following the tutorial from Youtube Class with methods that will be used many times to get, post and delete the data 
 class MusicService{
 
     constructor(){
-        this.URI = 'https://8080-copper-chickadee-hdffohu8.ws-eu04.gitpod.io/api/music';
+        this.URI = '/api/music';
     }
 
     async getMusic(){
