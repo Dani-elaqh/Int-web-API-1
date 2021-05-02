@@ -1,3 +1,6 @@
+//This code is a compilation of classes with the lecturer Mikhail Timofev and the tutorial from Fazt code on Youtube https://www.youtube.com/watch?v=VOx3iON96ew
+
+
 if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config();
 }
@@ -14,6 +17,7 @@ var webpackDevServer = require('webpack-dev-server');
 //init
 //server for the app
 const app= express();
+app.use(cors());
 
 // Add headers
 app.use(function (req, res, next) {
@@ -59,7 +63,7 @@ const storage = multer.diskStorage({
 app.use(multer({storage}).single('image'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(cors());
+
 
 
 //Routes

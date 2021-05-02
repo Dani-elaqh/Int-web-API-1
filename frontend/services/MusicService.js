@@ -2,7 +2,7 @@
 class MusicService{
 
     constructor(){
-        this.URI = 'https://8000-moccasin-alligator-l76m3m98.ws-eu04.gitpod.io/api/music';
+        this.URI = 'https://8000-copper-chickadee-hdffohu8.ws-eu04.gitpod.io/api/music';
     }
 
     async getMusic(){

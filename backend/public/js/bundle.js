@@ -35,7 +35,7 @@ async renderMusic(){
         <div class="card m-2">
             <div class="row" >
                 <div class="col-md-4">
-                    <img src="https://localhost:8000${music.imagePath}" alt="" class="ims-fluid"/>
+                    <img src="${music.imagePath}" alt="" class="img-fluid"/>
                 </div>
                 <div class="col-md-8">
                     <div class="card-block px-2>
@@ -82,7 +82,7 @@ renderMessage(message, colorMessage, secondsToRemove){
 
 async deleteMusic(musicId){
     await musicService.deleteMusic(musicId);
-    this.renderBooks();
+    this.renderMusic();
 
 }
 }
@@ -105,12 +105,12 @@ __webpack_require__.r(__webpack_exports__);
 class MusicService{
 
     constructor(){
-        this.URI = 'https://8000-moccasin-alligator-l76m3m98.ws-eu03.gitpod.io/api/music';
+        this.URI = 'https://8080-copper-chickadee-hdffohu8.ws-eu04.gitpod.io/api/music';
     }
 
     async getMusic(){
-        const response = await fetch(this.URI);
-        const music= await response.json();
+        const res = await fetch(this.URI);
+        const music= await res.json();
         return music;
     }
 
@@ -612,21 +612,18 @@ var __webpack_exports__ = {};
   \*************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_app_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/app.css */ "./frontend/styles/app.css");
-/* harmony import */ var _services_MusicService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/MusicService */ "./frontend/services/MusicService.js");
-/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UI */ "./frontend/UI.js");
-
-
+/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UI */ "./frontend/UI.js");
 
 
 
 
 document.addEventListener('DOMContentLoaded', () =>{
-    const ui = new _UI__WEBPACK_IMPORTED_MODULE_2__.default();
+    const ui = new _UI__WEBPACK_IMPORTED_MODULE_1__.default();
     ui.renderMusic();
 });
 
 document.getElementById('music-form')
-.addEventListener('submit', function(e) {
+.addEventListener('submit', (e) => {
     const artist = document.getElementById('artist').value;
     const album = document.getElementById('album').value;
     const image = document.getElementById('image').files;
@@ -636,7 +633,7 @@ document.getElementById('music-form')
     formData.append('artist', artist);
     formData.append('album', album);
 
-    const ui = new _UI__WEBPACK_IMPORTED_MODULE_2__.default();
+    const ui = new _UI__WEBPACK_IMPORTED_MODULE_1__.default();
     ui.addNewMusic(formData);
     ui.renderMessage('New Music added', 'success', 3000);
     
@@ -646,8 +643,9 @@ document.getElementById('music-form')
 document.getElementById('music-cards')
     .addEventListener('click', e =>{
         if(e.target.classList.contains('delete')){
-        const ui = new _UI__WEBPACK_IMPORTED_MODULE_2__.default()
-        ui.deleteMusic(e.target.getAttribute('_id'));
+        const ui = new _UI__WEBPACK_IMPORTED_MODULE_1__.default();
+        const id = e.target.getAttribute('_id');
+        ui.deleteMusic(id);
         ui.renderMessage('Music removed', 'success', 3000)
         }
         e.preventDefault();
